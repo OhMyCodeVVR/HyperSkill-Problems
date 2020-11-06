@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class Main {
+
+    public static int[] countOccurrences(int[] first, int[] second) {
+        // write your code here
+        int[] counts = new int[first.length];
+
+        for (int i = 0; i < first.length; i++) {
+            int counter = 0;
+            for (int k = 0; k < second.length; k++) {
+                if (first[i] == second[k]) {
+                    counter++;
+                }
+                counts[i] = counter;
+            }
+        }
+        return counts;
+    }
+
+    /* Do not change code below */
+    public static void main(String[] args) {
+        final Scanner scanner = new Scanner(System.in);
+        final int[] first = Arrays.stream(scanner.nextLine().split("\\s+"))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+        final int[] second = Arrays.stream(scanner.nextLine().split("\\s+"))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+        final String result = Arrays.toString(countOccurrences(first, second))
+                .replace(", ", " ")
+                .replace("[", "")
+                .replace("]", "");
+        System.out.println(result);
+    }
+}
